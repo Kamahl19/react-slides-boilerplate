@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ReactSlides } from 'react-slides';
-import slides from './slides';
+import Deck from './Deck';
 
 import './styles.less';
 
 render(
-    <ReactSlides slides={slides} />,
+    <Deck />,
     document.getElementById('root')
 );
