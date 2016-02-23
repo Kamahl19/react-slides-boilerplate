@@ -1,5 +1,7 @@
 import React from 'react';
-import { Code, GoTo } from 'react-slides';
+import { Code, GoTo, Markdown } from 'react-slides';
+
+const md = '# This is a header\n\nAnd this is a paragraph';
 
 const code = `const a = 5;
 const b = 10;
@@ -21,7 +23,7 @@ export default {
     content: (
         <div>
 
-            <h1>Code Editor</h1>
+            <Markdown source={md} />
 
             <Code value={code} />
 

@@ -31,7 +31,7 @@ module.exports = {
             loader: 'file-loader',
         }, {
             test: /\.json$/,
-            loaders: 'json-loader',
+            loader: 'json-loader',
         }]
     },
     plugins: []
