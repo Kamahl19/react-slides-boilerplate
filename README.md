@@ -15,9 +15,9 @@ Boilerplate for presentation library based on ReactJS
 |Media Button Next|Next Slide|
 |Media Button Previous|Previous Slide|
 |Space|Next Slide|
-|F10|Toggle Presenter Mode|
-|F9 while focus in Code Editor|Run JS code from Code Editor|
-|F11 while focus in Code Editor|Toggle Fullscreen Mode of Code Editor|
+|Shoft + F10|Toggle Presenter Mode|
+|Ctrl + Enter while focus in Code Editor|Run JS code from Code Editor|
+|ESC focus in Code Editor|Toggle Fullscreen Mode of Code Editor|
 
 ## Creating Presentation
 Files representing presentation slides will live in `/src/slides` folder.
