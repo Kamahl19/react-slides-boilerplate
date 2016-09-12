@@ -37,7 +37,7 @@ module.exports = lodash.merge(baseConfig, {
     plugins: baseConfig.plugins.concat([
         new CopyWebpackPlugin([{ from: 'public', to: 'public' }]),
         new ExtractTextPlugin('[name].bundle.[hash].css', {}),
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
