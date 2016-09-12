@@ -1,14 +1,48 @@
 const webpack = require('webpack');
-const merge = require('lodash.merge');
+const lodash = require('lodash');
 const baseConfig = require('./config.base');
+const commons = require('./common.js');
 
-module.exports = merge(baseConfig, {
+module.exports = lodash.merge(baseConfig, {
     devtool: 'cheap-module-eval-source-map',
-    entry: [
-        'webpack-hot-middleware/client'
-    ].concat(baseConfig.entry),
+    debug: true,
+
+    entry: {
+        main: baseConfig.entry.main.concat([
+            'eventsource-polyfill',
+            'webpack-hot-middleware/client',
+        ])
+    },
+
+    output: {
+        path: commons.root('dist'),
+        filename: '[name].bundle.js',
+        sourceMapFilename: '[name].map',
+        chunkFilename: '[id].chunk.js',
+        publicPath: '/'
+    },
+
+    module: {
+        loaders: baseConfig.module.loaders.concat([
+            {
+                test: /\.css$/,
+                loader: 'style!css'
+            }, {
+                test: /\.less$/,
+                exclude: /node_modules/,
+                loader: 'style!css!less?sourceMap'
+            }, {
+                test: /\.json$/,
+                loader: 'json',
+            }
+        ])
+    },
+
     plugins: baseConfig.plugins.concat([
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"development"'
+        }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
     ])
 });

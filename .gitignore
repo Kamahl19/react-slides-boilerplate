@@ -1,6 +1,9 @@
-.DS_Store
-node_modules
-npm-debug.log
-dist
 *.sublime-project
 *.sublime-workspace
+*.log
+logs
+.DS_Store
+node_modules
+dist
+.idea
+.DS_Store
