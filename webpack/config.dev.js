@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const lodash = require('lodash');
 const baseConfig = require('./config.base');
-const commons = require('./common.js');
+const commons = require('./common');
 
 module.exports = lodash.merge(baseConfig, {
     devtool: 'cheap-module-eval-source-map',
@@ -29,7 +29,6 @@ module.exports = lodash.merge(baseConfig, {
                 loader: 'style!css'
             }, {
                 test: /\.less$/,
-                exclude: /node_modules/,
                 loader: 'style!css!less?sourceMap'
             }, {
                 test: /\.json$/,

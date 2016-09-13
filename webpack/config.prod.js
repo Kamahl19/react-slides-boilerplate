@@ -25,7 +25,6 @@ module.exports = lodash.merge(baseConfig, {
                 loader: ExtractTextPlugin.extract('style', 'css?minimize', 'postcss')
             }, {
                 test: /\.less$/,
-                exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract('style', 'css?minimize!less', 'postcss')
             }, {
                 test: /\.json$/,
