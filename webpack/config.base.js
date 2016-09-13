@@ -64,10 +64,7 @@ module.exports = {
             template: 'src/index.html',
             inject: 'body',
             hash: true, // inject ?hash at the end of the files...
-            minify: {
-                collapseWhitespace: true,
-                removeTagWhitespace: true,
-            },
+            minify: false,
             chunksSortMode: function compare(a, b) {
                 // common always first
                 if (a.names[0] === 'common') {

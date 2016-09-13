@@ -1,10 +1,9 @@
 const webpack = require('webpack');
 const lodash = require('lodash');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const baseConfig = require('./config.base');
-const commons = require('./common.js');
+const commons = require('./common');
 
 module.exports = lodash.merge(baseConfig, {
     devtool: 'source-map',
@@ -19,31 +18,23 @@ module.exports = lodash.merge(baseConfig, {
     },
 
     module: {
-        loaders: baseConfig.module.loaders.concat([
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css?minimize', 'postcss')
-            }, {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css?minimize!less', 'postcss')
-            }, {
-                test: /\.json$/,
-                loader: ExtractTextPlugin.extract('json'),
-            }
-        ])
+        loaders: baseConfig.module.loaders.concat([{
+            test: /\.css$/,
+            loader: 'style!css!postcss'
+        }, {
+            test: /\.less$/,
+            loader: 'style!css!less!postcss'
+        }, {
+            test: /\.json$/,
+            loader: 'json',
+        }])
     },
 
     plugins: baseConfig.plugins.concat([
         new CopyWebpackPlugin([{ from: 'public', to: 'public' }]),
-        new ExtractTextPlugin('[name].bundle.[hash].css', {}),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
         }),
         new webpack.optimize.DedupePlugin(),
     ]),
